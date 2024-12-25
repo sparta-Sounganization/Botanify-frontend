@@ -1,12 +1,12 @@
 "use client"
 
 import { DefaultView } from "@/src/components/view/DefaultView"
-import PostView from "@/src/components/view/PostView"
+import PostsView from "@/src/components/view/PostsView"
 
 export default function Community() {
     return (
         <DefaultView>
-            <PostView />
+            <PostsView />
         </DefaultView>
     )
 }

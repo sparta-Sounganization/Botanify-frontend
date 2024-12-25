@@ -3,11 +3,6 @@ import PageButton from "../block/PageButton";
 import { useEffect, useState } from "react";
 
 export default function PageNavigator({ pageHeader, setPage }: { pageHeader: PageHeader, setPage: React.Dispatch<any> }) {
-	const now = pageHeader.number;
-	const size = pageHeader.size;
-	const totalElements = pageHeader.totalElements;
-	const totalPages = pageHeader.totalPages;
-
 	const NAV_SIZE: number = 5;
 
 	const [navPos, setNavPos] = useState(1);
@@ -19,10 +14,6 @@ export default function PageNavigator({ pageHeader, setPage }: { pageHeader: Pag
 		setNavSize(Math.trunc(((pageHeader.totalPages - 1) / NAV_SIZE) + 1))
 		setFirstNav(navPos == 1)
 		setLastNav(navPos == navSize)
-		console.log(`네비게이터 크기 = ${navSize}`)
-		console.log(`네비게이터 현위치 = ${navPos}`)
-		console.log(`처음 네비? = ${firstNav}`)
-		console.log(`마지막 네비? = ${lastNav}`)
 	}, [navPos, pageHeader])
 
 	return (

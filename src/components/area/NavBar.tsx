@@ -1,14 +1,14 @@
 import SearchBar from "@/src/components/block/SearchBar";
-import { useState } from "react";
 import ProfileIcon from "../block/ProfileIcon";
 import Image from 'next/image';
 import botanify_icon from '@/src/public/Botanify_icon.png';
-import { UserToken } from '@/src/types/types';
 import DefaultHref from "../block/DefaultHref";
+import useFetchProfile from "@/src/hooks/useFetchProfile";
+import Loading from "../block/Loading";
 
 export const NavBar = () => {
 
-  const [user, setUser] = useState<UserToken>({userId:0,imageSrc:"",nickname:"지민지민지"});
+  const {data, loading} = useFetchProfile();
 
   return (
       <div className="container px-4 py-3 flex gap-4 justify-between">
@@ -26,12 +26,18 @@ export const NavBar = () => {
 
         <SearchBar />
 
-        {user ? (
-          <>
-            <DefaultHref label="로그인" href = '/auth/signin' disabled={false} />
-            <DefaultHref label="회원가입" href = '/auth/signup' disabled={false} />
-          </>
-        ):(<ProfileIcon user={user} />)}
+        {
+          loading ? (
+            <Loading />
+          ) : (
+            !data ? (
+              <>
+                <DefaultHref label="로그인" href = '/auth/signin' disabled={false} />
+                <DefaultHref label="회원가입" href = '/auth/signup' disabled={false} />
+              </>
+            ):(<ProfileIcon user={data} />)
+          )
+        }
       </div>
     );
   };
