@@ -4,7 +4,7 @@ import useFetchPost from "@/src/hooks/useFetchPost";
 
 export default function PostView({ postId }: { postId: string | any }) {
 
-	const {data,loading} = useFetchPost(postId);
+	const { data, loading } = useFetchPost(postId);
 
 	return (
 		<div>

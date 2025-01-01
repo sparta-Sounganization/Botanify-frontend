@@ -1,5 +1,4 @@
 import { useState } from "react";
-import env from "@/src/config/env";
 
 export default function useImageUpload(domain: string) {
 	const [file, setFile] = useState<File | null>(null);
@@ -23,7 +22,7 @@ export default function useImageUpload(domain: string) {
 		setMessage("");
 
 		try {
-			const response = await fetch(`${env.BASE_URL}/api/v1/${domain}/images`, {
+			const response = await fetch(`/api/v1/${domain}/images`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ fileName: file.name }),

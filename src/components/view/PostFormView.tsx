@@ -14,7 +14,7 @@ export default function PostFormView() {
 	const contentRef = useRef<HTMLTextAreaElement>(null);
 
 	// request (image)
-	// const { file, imageUrl, uploading, handleFileChange, handleImageUpload } = useImageUpload("posts");
+	const { file, imageUrl, uploading, handleFileChange, handleImageUpload } = useImageUpload("posts");
 
 	// response
 	const { data, loading, sendRequest } = useRest<CommonIdMessage | ValidationMessage>();
@@ -27,7 +27,8 @@ export default function PostFormView() {
 			method: "POST",
 			body: {
 				title: titleRef.current?.value,
-				content: contentRef.current?.value
+				content: contentRef.current?.value,
+				imageUrl: imageUrl
 			}
 		}
 		e.preventDefault();
@@ -44,6 +45,11 @@ export default function PostFormView() {
 		}
 	}
 
+	// 파일 선택 이후 자동으로 이미지 업로드
+	useEffect(() => {
+		if (file) handleImageUpload();
+	}, [file])
+
 	return (
 		<div className="flex flex-col px-8">
 			<CardHeader headline="게시글 작성" />
@@ -57,6 +63,13 @@ export default function PostFormView() {
 						required
 					/>
 				</div>
+
+				<div className="relative w-full min-h-16 flex flex-col items-center bg-slate-400 rounded-lg">
+					{imageUrl && (<img src={imageUrl} alt="Uploaded" width={200} height={200} />)}
+					<label className="absolute bottom-1 text-sm p-2 m-3 bg-white rounded-xl transition-all opacity-30 hover:opacity-90 cursor-pointer" htmlFor="file-input">클릭하여 이미지 업로드</label>
+					<input id="file-input" style={{display:"none"}} className="fixed" type="file" onChange={handleFileChange} />
+				</div>
+
 				<div>
 					<textarea
 						className="w-full min-h-40 bg-slate-100"
@@ -65,14 +78,7 @@ export default function PostFormView() {
 						placeholder="본문 작성"
 					/>
 				</div>
-				{/* <div>
-                    <label>사진</label>
-                    <input type="file" onChange={handleFileChange} />
-                    {imageUrl && (<img src={imageUrl} alt="Uploaded" width={100} height={100} />)}
-                </div>
-                <button type="button" onClick={handleImageUpload} disabled={uploading}>
-                    {uploading ? "Uploading..." : "Upload Image"}
-                </button> */}
+
 				<div className="flex flex-row justify-end">
 					<DefaultSubmitButton label="등록" />
 				</div>
