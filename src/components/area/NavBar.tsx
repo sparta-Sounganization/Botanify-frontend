@@ -21,7 +21,7 @@ export const NavBar = () => {
         </Link>
 
         <DefaultHref label="커뮤니티" href = '/community' disabled={false} />
-        <DefaultHref label="내 식물" href = '/garden' disabled={false} />
+        <DefaultHref label="식물 백과" href = '/garden/species' disabled={false} />
         {/* <DefaultHref label="공지사항" href = '/announces' disabled={true} /> */}
         {/* <DefaultHref label="이벤트" href = '/events' disabled={true} /> */}
 

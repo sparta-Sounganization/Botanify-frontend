@@ -1,6 +1,10 @@
+import { CommentTemp } from "@/src/types/types";
 import Loading from "../block/Loading";
 import MessageBlock from "../block/MessageBlock";
 import useFetchPost from "@/src/hooks/useFetchPost";
+import CommentListItems from "../block/CommentListItem";
+import CommentForm from "../block/CommentForm";
+import Image from "next/image";
 
 export default function PostView({ postId }: { postId: string | any }) {
 
@@ -18,9 +22,20 @@ export default function PostView({ postId }: { postId: string | any }) {
 					<div className="my-4 italic">
 						조회수: {data.viewCounts}
 					</div>
-					<div className="min-h-60 p-4 border-y-4 shadow-md text-xl font-serif">
+
+					<div className="flex justify-center my-8">
+						{data.imageUrl && (<img src={data.imageUrl} alt="Uploaded" width={200} height={200} />)}
+					</div>
+
+					<div className="min-h-60 p-4 border-y-4 shadow-md text-xl">
 						{data.content}
 					</div>
+				</div>
+				<ul className="m-4">
+					{data.comments.map((cmt:CommentTemp, index:number) => (<CommentListItems key={index} cmt={cmt} />))}
+				</ul>
+				<div className="mx-4">
+					<CommentForm />
 				</div>
 			</div>
 			) : (
