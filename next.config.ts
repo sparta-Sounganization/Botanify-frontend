@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: `${process.env.NEXT_PUBLIC_SPRING_API_URL}/api/:path*`
+        destination: `http://${process.env.NEXT_PUBLIC_SPRING_API_URL}/api/:path*`
       }
     ];
   },
