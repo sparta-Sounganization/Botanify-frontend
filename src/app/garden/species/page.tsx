@@ -1,12 +1,12 @@
 "use client";
 
 import { DefaultView } from "@/src/components/view/DefaultView";
-import PostFormView from "@/src/components/view/PostFormView";
+import SpeciesView from "@/src/components/view/SpeciesView";
 
-export default function PostWrite() {
+export default function Species() {
     return (
         <DefaultView>
-            <PostFormView />
+            <SpeciesView />
         </DefaultView>
-    );
+    )
 }

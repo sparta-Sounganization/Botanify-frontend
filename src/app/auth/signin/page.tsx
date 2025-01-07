@@ -10,7 +10,6 @@ export default function LoginPage() {
 	const router = useRouter();
 
 	const handleLogin = async (e: React.FormEvent) => {
-		const base_url = process.env.NEXT_PUBLIC_SPRING_API_URL;
 
 		e.preventDefault();
 

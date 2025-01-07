@@ -44,6 +44,26 @@ export interface Post {
     imageUrl: string | null;
 }
 
+// 품종 전체 조회
+
+export interface SpeciesQueries {
+    page?: number;
+    size?: number;
+    search?: string;
+}
+
+export interface SpeciesPage {
+    content: Species[];
+    page: PageHeader;
+}
+
+export interface Species {
+    id: number;
+    rtnFileUrl: string;
+    plantName: string;
+}
+
+
 
 // 게시글 단건 조회 ================================
 

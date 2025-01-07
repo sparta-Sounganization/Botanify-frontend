@@ -1,11 +1,8 @@
 "use client"
 
 import CardHeader from "@/src/components/area/CardHeader";
-import SignInput from "@/src/components/block/SignInput";
 import { DefaultView } from "@/src/components/view/DefaultView";
 import useFetchProfile from "@/src/hooks/useFetchProfile";
-import { UserData } from "@/src/types/types";
-import { useEffect, useState } from "react";
 
 export default function MyPage() {
 
@@ -16,7 +13,7 @@ export default function MyPage() {
             <div>
                 {!loading && data && (
                     <div>
-                        <CardHeader headline={`"${data.username}"님의 마이페이지`} />
+                        <CardHeader headline={`"${data.username}"님의 마이페이지`}><></></CardHeader>
                         <div className="grid-cols-2">
                             <p>등급</p>
                             <p>{data.role}</p>

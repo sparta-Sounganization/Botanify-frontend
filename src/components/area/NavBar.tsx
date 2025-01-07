@@ -5,6 +5,7 @@ import botanify_icon from '@/src/public/Botanify_icon.png';
 import DefaultHref from "../block/DefaultHref";
 import useFetchProfile from "@/src/hooks/useFetchProfile";
 import Loading from "../block/Loading";
+import Link from "next/link";
 
 export const NavBar = () => {
 
@@ -14,10 +15,10 @@ export const NavBar = () => {
       <div className="container px-4 py-3 flex gap-4 justify-between">
 
         {/* 로고 */}
-        <a href="/" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image src={botanify_icon} alt="Botanify Logo" className="size-16" />
           <h1 className="text-3xl font-bold text-green-600">BOTANIFY</h1>
-        </a>
+        </Link>
 
         <DefaultHref label="커뮤니티" href = '/community' disabled={false} />
         <DefaultHref label="내 식물" href = '/garden' disabled={false} />

@@ -1,5 +1,3 @@
-"use client";
-
 import AuthView from "@/src/components/view/AuthView";
 import SignForm from "@/src/components/block/SignForm";
 

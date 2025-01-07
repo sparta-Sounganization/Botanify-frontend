@@ -3,7 +3,6 @@ import { useState } from "react";
 export default function useImageUpload(domain: string) {
 	const [file, setFile] = useState<File | null>(null);
 	const [imageUrl, setImageUrl] = useState<string | null>(null);
-	const [uploading, setUploading] = useState(false);
 	const [message, setMessage] = useState("");
 
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +17,6 @@ export default function useImageUpload(domain: string) {
 			return;
 		}
 
-		setUploading(true);
 		setMessage("");
 
 		try {
@@ -48,15 +46,12 @@ export default function useImageUpload(domain: string) {
 			}
 		} catch {
 			setMessage("An error occurred while uploading the image.");
-		} finally {
-			setUploading(false);
 		}
 	};
 
 	return {
 		file,
 		imageUrl,
-		uploading,
 		message,
 		handleFileChange,
 		handleImageUpload,

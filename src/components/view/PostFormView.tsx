@@ -1,7 +1,7 @@
 "use client"
 
 import useImageUpload from "@/src/hooks/useImageUpload";
-import { FormEventHandler, useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import CardHeader from "../area/CardHeader";
 import DefaultSubmitButton from "../block/DefaultSubmitButton";
 import useRest from "@/src/hooks/useRest";
@@ -14,7 +14,7 @@ export default function PostFormView() {
 	const contentRef = useRef<HTMLTextAreaElement>(null);
 
 	// request (image)
-	const { file, imageUrl, uploading, handleFileChange, handleImageUpload } = useImageUpload("posts");
+	const { file, imageUrl, handleFileChange, handleImageUpload } = useImageUpload("posts");
 
 	// response
 	const { data, loading, sendRequest } = useRest<CommonIdMessage | ValidationMessage>();

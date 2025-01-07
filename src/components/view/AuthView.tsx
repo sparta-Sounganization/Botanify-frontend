@@ -1,5 +1,4 @@
 import Image from "next/image";
-import SignInput from "../block/SignInput";
 import botanify_main from "@/src/public/Botanify_main.png";
 
 export default function AuthView({children}: Readonly<{children: React.ReactNode}>|any) {
